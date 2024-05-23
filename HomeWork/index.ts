@@ -38,3 +38,5 @@ let user3: {
 let arrayUser: { name: string; age: number; }[] = [];
 arrayUser.push(user1,user2,user3)
 console.log(arrayUser);
+
+
