@@ -1,39 +1,6 @@
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-
-// const Task = () => {
-//   // const isEdit = false;
-//   const [isEdit, setIsEdit] = React.useState(false); // метод useState возвращает массив всегда с двумя элементами []- в даннм примере это переменная isEdit и метод котрый изменяет его(isEdit)  setIsEdit
-
-//  const textId= React.useRef();
-
-//   const handleClickSave = ()=>{
-//     setIsEdit(false)
-//   }
-
-//   if (isEdit) {
-//     return (
-//       <>
-//         <textarea ref = {textId} defaultValue=""></textarea>
-//         {/* <button onClick={() => setIsEdit(false)}>Save</button> */}
-//         <button onClick={handleClickSave}>Save</button>
-//       </>
-//     );
-//   } else {
-//     return (
-//       <>
-//         <p>Name</p>
-//         <button onClick={() => setIsEdit(true)}>Edit</button>
-//         <button>Delete</button>
-//       </>
-//     );
-//   }
-// };
-
-// root.render(<Task />);
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const Task = ({ title }) => {
+const Task = ({ title, del }) => {
     // const isEdit = false;
     const [isEdit, setIsEdit] = React.useState(false); // [isEdit, setIsEdit] Array(2)
     // React.useState() - хук (инструмент или метод), который принимает дефолтное значение локального состояния 
@@ -67,7 +34,7 @@ const Task = ({ title }) => {
             <>
                 <p>{updatedTask}</p>
                 <button onClick={() => setIsEdit(true)}>Edit</button>
-                <button>Delete</button>
+                <button onClick={del}>Delete</button>
             </>
         )
     }
@@ -75,13 +42,36 @@ const Task = ({ title }) => {
 
 const TaskList = () => {
     const [tasks, setTasks] = React.useState(['Task 1', 'Task 2', 'Task 3']);
+    const [newTask, setNewTask] = React.useState('');
+
+    const deleteTask = (i) => {
+        // CRUD - Create Read Update Delete
+        // 1. Глубокая копия массива
+        const tasksCopy = [...tasks];
+
+        // 2. Поверхностная копия массива
+        // const tasksCopy2 = tasks;
+        // Удаление i-ого элемента массива в копии
+        tasksCopy.splice(i, 1);
+        // Обновлённую копию передали в качестве нового значения локального состояния
+        setTasks(tasksCopy);
+    }
     
     return (
         <>
+            <h1>Todo List App</h1>
+            <div>
+                <input value={newTask} onChange={(e) => setNewTask(e.target.value)}/>
+                <button>Add Task</button>
+            </div>
             { tasks.map((task, i) => (
                 <Task
-                    key={i}
+                    // Свойство key является обязательным (служебный инструмент для библиотеки React)
+                    // У нас нет доступа до значения, переданного с помощью props key
+                    key={Math.random()}
+                    // index={i}
                     title={task}
+                    del={() => deleteTask(i)}
                 />
             )) }
         </>
