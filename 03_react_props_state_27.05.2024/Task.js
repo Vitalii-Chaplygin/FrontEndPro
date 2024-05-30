@@ -57,12 +57,13 @@ const TaskList = () => {
         setTasks(tasksCopy);
     }
     
+    
     return (
         <>
-            <h1>Todo List App</h1>
+            <h1 className='text-center'>Todo List App</h1>
             <div>
-                <input value={newTask} onChange={(e) => setNewTask(e.target.value)}/>
-                <button>Add Task</button>
+                <input  className='' value={newTask} onChange={(e) => setNewTask(e.target.value)}/>
+                <button >Add Task</button>
             </div>
             { tasks.map((task, i) => (
                 <Task

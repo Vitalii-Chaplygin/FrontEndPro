@@ -2,7 +2,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const Champions = ({ name, championshipYear, photo }) => {
   return (
-    <div style={{ border: "1px solid black", width:"300px ",textAlign:"center"}}>
+    <div
+      style={{
+        border: "1px solid black",
+        width: "300px ",
+        textAlign: "center",
+      }}
+    >
       <h2>{name}</h2>
       <p>Чемпион мира с{championshipYear}</p>
       <img src={photo}></img>
@@ -64,29 +70,26 @@ const champions = [
     photo: "./img/Борис Васильевич Спасский.jpg",
   },
   {
-    name:"Роберт Джеймс «Бобби» Фишер ",
-      championshipYear:"  1972 по 1975 ",
-      photo:"./img/Роберт Джеймс «Бобби» Фишер.jpg"
+    name: "Роберт Джеймс «Бобби» Фишер ",
+    championshipYear: "  1972 по 1975 ",
+    photo: "./img/Роберт Джеймс «Бобби» Фишер.jpg",
   },
-{
-  name:"Анатолий Евгеньевич Карпов ",
-      championshipYear:"  1975 по 1985 ",
-      photo:"./img/Анатолий Евгеньевич Карпов.jpg"
-},
+  {
+    name: "Анатолий Евгеньевич Карпов ",
+    championshipYear: "  1975 по 1985 ",
+    photo: "./img/Анатолий Евгеньевич Карпов.jpg",
+  },
 
-{
-  name:"Гарри Кимович Каспаров ",
-  championshipYear:"  1985 по 1993 ",
-  photo:"./img/Гарри Кимович Каспаров.jpg"
-
-}
-
+  {
+    name: "Гарри Кимович Каспаров ",
+    championshipYear: "  1985 по 1993 ",
+    photo: "./img/Гарри Кимович Каспаров.jpg",
+  },
 ];
 
 root.render(
   <>
     <h1>Чемпионы мира по шахматам</h1>
-    
 
     {/* <Champions
       name="Эмануил Ласкер "
@@ -155,26 +158,15 @@ root.render(
       photo=".\img\Гарри Кимович Каспаров.jpg"
     /> */}
 
-
-
-
-
-
-
-{
-  champions.map((element,index)=>(
-    <>
-    <Champions key= {index} name={element.name} championshipYear={element.championshipYear} photo={element.photo}/>
-    </>
-  )
-
-  )
-}
-
-
-
-
-
-
+    {champions.map((element, index) => (
+      <>
+        <Champions
+          key={index}
+          name={element.name}
+          championshipYear={element.championshipYear}
+          photo={element.photo}
+        />
+      </>
+    ))}
   </>
 );
