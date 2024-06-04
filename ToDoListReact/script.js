@@ -1,6 +1,4 @@
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// const body = ReactDOM.createRoot(document.getElementById("body"));
-
 
 const Task = ({ title, del }) => {
   // const isEdit = false;
@@ -26,7 +24,7 @@ const Task = ({ title, del }) => {
     return (
       <>
         {/* 2. Соединяем абстрактную ссылку с конкретным элементом, на который данная ссылка будет вести */}
-        <textarea ref={textId} defaultValue={updatedTask}></textarea>
+        <textarea className="" ref={textId} defaultValue={updatedTask}></textarea>
         {/* () => setIsEdit(false)     setIsEdit(false)        setIsEdit*/}
         <button className="btn btn-success" onClick={handleClickSave}>
           Save
@@ -36,7 +34,7 @@ const Task = ({ title, del }) => {
   } else {
     return (
       <div className="border border-primary-subtle w-50" style={{ margin: '0 auto'}}>
-        <p className='mt-2'>{updatedTask}</p>
+        <p className="mt-2 badge text-bg-primary">{updatedTask}</p>
         <div className='d-flex justify-content-center mb-5'>
           <button className="btn btn-warning" onClick={() => setIsEdit(true)}>
             Edit
@@ -77,12 +75,12 @@ const TaskList = () => {
   };
 
   return (
-    <div className="p-3 mb-2 bg-primary text-white">
+    <div className="bagcollor">
       <h1 className="text-center">Todo List App</h1>
       <div style={{ margin: "0 auto" }} className="w-50 d-flex">
         <input
-          className="form-control"
-          value={newTask}
+          className="form-control "
+          value ={newTask}
           onChange={(e) => setNewTask(e.target.value)}
           placeholder="Введите новую задачу..."
         />
